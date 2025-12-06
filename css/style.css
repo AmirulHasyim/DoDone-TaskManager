@@ -1,0 +1,269 @@
+/* style.css - DoDone Futuristic Dark/Light Theme */
+
+/* 1. CUSTOM STYLES: DARK MODE (DEFAULT) VARIABLES */
+:root, .dark-mode { 
+  /* Colors - Deep Space / Neon */
+  --dodone-dark-bg: #121217; 
+  --dodone-card-bg: #2B2D42; 
+  --dodone-accent: #00F0FF; 
+  --dodone-text-light: #EAEAEA; /* Light text on dark bg */
+  
+  --dodone-success-neon: #64FFDA; 
+  --dodone-info-neon: #A6A9F8; 
+  --dodone-warning-neon: #FFEB3B; 
+  --dodone-danger-neon: #F05454; 
+  
+  --dodone-logo-text: #EAEAEA;
+  --dodone-logo-bg: #2B2D42;
+
+  /* Bootstrap Override */
+  --bs-primary: var(--dodone-accent);
+  --bs-secondary: var(--dodone-text-light);
+  --bs-body-bg: var(--dodone-dark-bg);
+  --bs-body-color: var(--dodone-text-light);
+  --bs-table-hover-bg: #3B3E51; 
+}
+
+/* 1b. CUSTOM STYLES: LIGHT MODE VARIABLES */
+.light-mode {
+  --dodone-dark-bg: #f8f9fa; 
+  --dodone-card-bg: #ffffff; 
+  --dodone-accent: #0d6efd; 
+  --dodone-text-light: #212529; /* Dark text on light bg */
+
+  --dodone-success-neon: #198754; 
+  --dodone-info-neon: #0dcaf0; 
+  --dodone-warning-neon: #ffc107; 
+  --dodone-danger-neon: #dc3545; 
+  
+  --dodone-logo-text: #212529;
+  --dodone-logo-bg: #f8f9fa;
+  
+  --bs-body-bg: var(--dodone-dark-bg);
+  --bs-body-color: var(--dodone-text-light);
+  --bs-table-hover-bg: #e9ecef;
+}
+
+/* 2. LAYOUT & NAVIGATION (FIXED NAVBAR TEXT COLOR) */
+.dodone-nav {
+  /* Common styles */
+  border-bottom: 2px solid var(--dodone-accent); 
+}
+
+/* Fix 1: Removed redundant --bs-navbar-color definitions, as they weren't being inherited correctly by links. */
+.dark-mode .dodone-nav {
+    background-color: var(--dodone-card-bg) !important; 
+}
+
+.light-mode .dodone-nav {
+    background-color: var(--dodone-card-bg) !important;
+}
+
+/* Fix 2 & 3: Ensure all navigation links, text, and the User Name span use the theme's core light/dark text variable. */
+.dodone-nav .nav-link,
+.dodone-nav .dropdown-toggle,
+.dodone-nav .navbar-text, 
+.dodone-nav .navbar-brand,
+.dodone-nav .dropdown-toggle #navUsername { /* ADDED the ID selector for the User Name span */
+    /* This variable changes based on .dark-mode or .light-mode root/body class */
+    color: var(--dodone-text-light) !important;
+}
+
+.dodone-nav .nav-link:hover,
+.dodone-nav .dropdown-toggle:hover {
+    color: var(--dodone-accent) !important;
+}
+
+/* Logo Text Fix */
+/* This is a special fix because the logo is an SVG text element, which ignores Bootstrap variables */
+.dodone-nav .navbar-brand .logo-text { 
+    fill: var(--dodone-text-light) !important; 
+}
+
+
+.dodone-nav .nav-link.active {
+    color: var(--dodone-accent) !important; 
+    font-weight: 600;
+}
+
+/* 3. TYPOGRAPHY & 4. UTILITIES */
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: var(--dodone-text-light);
+}
+
+a {
+  color: var(--dodone-accent);
+}
+
+.card {
+  background-color: var(--dodone-card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+  border-radius: 0.5rem;
+}
+
+.card-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--dodone-card-bg);
+}
+
+.text-accent {
+  color: var(--dodone-accent) !important;
+}
+
+
+/* 5. COMPONENTS */
+/* Status Badges */
+.badge {
+  font-weight: 600;
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  min-width: 80px; 
+  text-align: center;
+}
+
+/* Specific Badge Colors */
+.bg-success { background-color: var(--dodone-success-neon) !important; color: var(--dodone-card-bg) !important; }
+.bg-primary { background-color: var(--dodone-accent) !important; color: #fff !important; }
+.bg-warning { background-color: var(--dodone-warning-neon) !important; color: var(--dodone-card-bg) !important; }
+.bg-info { background-color: var(--dodone-info-neon) !important; color: var(--dodone-card-bg) !important; }
+.bg-danger { background-color: var(--dodone-danger-neon) !important; color: #fff !important; } 
+
+/* Button Overrides */
+.btn-primary {
+  --bs-btn-bg: var(--dodone-accent);
+  --bs-btn-border-color: var(--dodone-accent);
+  --bs-btn-hover-bg: #00c0cb;
+  --bs-btn-hover-border-color: #00c0cb;
+  --bs-btn-focus-shadow-rgb: 0, 240, 255;
+  --bs-btn-active-bg: #00a0a8;
+  --bs-btn-active-border-color: #00a0a8;
+}
+
+.btn-outline-secondary {
+    --bs-btn-color: var(--dodone-text-light);
+    --bs-btn-border-color: var(--dodone-text-light);
+    --bs-btn-hover-color: var(--dodone-card-bg);
+    --bs-btn-hover-bg: var(--dodone-text-light);
+    --bs-btn-active-bg: var(--dodone-text-light);
+}
+
+/* Modal Styling */
+.modal-content {
+    background-color: var(--dodone-card-bg);
+    color: var(--dodone-text-light);
+    border: 1px solid var(--dodone-accent);
+}
+.modal-header {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+.modal-footer {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Form Controls */
+.form-control, .form-select {
+    background-color: var(--dodone-dark-bg);
+    color: var(--dodone-text-light);
+    border: 1px solid #4a4d6e;
+}
+.form-control:focus, .form-select:focus {
+    background-color: var(--dodone-dark-bg);
+    color: var(--dodone-text-light);
+    border-color: var(--dodone-accent);
+    box-shadow: 0 0 0 0.25rem rgba(0, 240, 255, 0.25);
+}
+.light-mode .form-control, .light-mode .form-select {
+    background-color: #ffffff;
+    color: var(--dodone-text-light);
+    border: 1px solid #ced4da;
+}
+.light-mode .form-control:focus, .light-mode .form-select:focus {
+    background-color: #ffffff;
+}
+
+/* 6. TABLE STYLING - STATUS SOFT COLORS */
+
+/* Dark Mode Soft Colors */
+.dark-mode .table-overdue-soft {
+  background-color: rgba(240, 84, 84, 0.1) !important;
+  border-left: 5px solid var(--dodone-danger-neon);
+}
+.dark-mode .table-due-soon-soft {
+  background-color: rgba(255, 235, 59, 0.1) !important;
+  border-left: 5px solid var(--dodone-warning-neon);
+}
+.dark-mode .table-pending-soft {
+  background-color: rgba(0, 240, 255, 0.1) !important;
+  border-left: 5px solid var(--dodone-accent);
+}
+.dark-mode .table-submitted-soft {
+  background-color: rgba(166, 169, 248, 0.1) !important;
+  border-left: 5px solid var(--dodone-info-neon);
+}
+.dark-mode .table-completed-soft {
+  background-color: rgba(100, 255, 218, 0.1) !important;
+  border-left: 5px solid var(--dodone-success-neon);
+}
+
+/* Light Mode Soft Colors */
+.light-mode .table-overdue-soft {
+  background-color: #f8d7da !important;
+  color: #842029 !important;
+  border-left-color: #dc3545;
+}
+.light-mode .table-due-soon-soft {
+  background-color: #fff3cd !important;
+  color: #664d03 !important;
+  border-left-color: #ffc107;
+}
+.light-mode .table-pending-soft {
+  background-color: #cff4fc !important;
+  color: #055160 !important;
+  border-left-color: #0dcaf0;
+}
+.light-mode .table-submitted-soft {
+  background-color: #e3f2fd !important;
+  color: #0d6efd !important;
+  border-left-color: #0d6efd;
+}
+.light-mode .table-completed-soft {
+  background-color: #d1e7dd !important;
+  color: #0f5132 !important;
+  border-left-color: #198754;
+}
+
+/* 7. TABLES */
+.table {
+    --bs-table-bg: var(--dodone-card-bg);
+    --bs-table-color: var(--dodone-text-light);
+    --bs-table-border-color: #3b3e51; 
+}
+
+.table-hover > tbody > tr:hover {
+    --bs-table-bg-hover: var(--bs-table-hover-bg);
+    background-color: var(--bs-table-bg-hover);
+}
+
+
+/* 8. Dashboard Card Soft Backgrounds (Matching the table soft colors) */
+/* Dark Mode Soft Color overrides */
+.bg-danger-soft { background-color: rgba(240, 84, 84, 0.1) !important; }
+.bg-success-soft { background-color: rgba(100, 255, 218, 0.1) !important; }
+.bg-primary-soft { background-color: rgba(166, 169, 248, 0.1) !important; } /* Used for submitted/info */
+.bg-warning-soft { background-color: rgba(255, 235, 59, 0.1) !important; }
+.bg-info-soft { background-color: rgba(0, 240, 255, 0.1) !important; } /* Used for total tasks/info */
+
+/* Light Mode Soft Color overrides */
+.light-mode .bg-danger-soft { background-color: #f8d7da !important; color: #842029 !important; }
+.light-mode .bg-success-soft { background-color: #d1e7dd !important; color: #0f5132 !important; }
+.light-mode .bg-primary-soft { background-color: #e3f2fd !important; color: #0d6efd !important; }
+.light-mode .bg-warning-soft { background-color: #fff3cd !important; color: #664d03 !important; }
+.light-mode .bg-info-soft { background-color: #cff4fc !important; color: #055160 !important; }

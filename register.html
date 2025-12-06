@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register - DoDone</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> 
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .password-toggle {
+      font-size: 1.2rem;
+      user-select: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-4 shadow-sm" style="width: 450px;">
+    <h3 class="text-center mb-3">
+      <svg width="150" height="30" viewBox="0 0 150 30" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .logo-text { font-family: 'Orbitron', sans-serif; font-weight: 600; font-size: 20px; fill: var(--dodone-text-light); }
+            .logo-dot { fill: var(--dodone-accent); }
+          </style>
+        </defs>
+        <text x="0" y="20" class="logo-text">DoD<tspan class="logo-dot">o</tspan>ne</text>
+      </svg>
+    </h3>
+    <h5 class="text-center mb-4 text-secondary">Student Registration</h5>
+
+    <div id="registerError" class="alert alert-danger d-none small"></div>
+
+    <form id="registerForm">
+      <div class="mb-3">
+        <label for="regUsername" class="form-label">Username (e.g., Email or ID)</label>
+        <input id="regUsername" type="text" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="regFullName" class="form-label">Full Name</label>
+        <input id="regFullName" type="text" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="regMatricNo" class="form-label">Matric/ID Number</label>
+        <input id="regMatricNo" type="text" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="regRole" class="form-label">Program / Qualification</label>
+        <select id="regRole" class="form-select" required>
+          <option value="" disabled selected>Select Program</option>
+          <option value="Diploma">Diploma</option>
+          <option value="Degree">Degree</option>
+          <option value="Masters">Masters</option>
+          <option value="PHD">PHD</option>
+        </select>
+      </div>
+      <div class="mb-3 position-relative">
+        <label for="regPassword" class="form-label">Password (Min 6 chars)</label>
+        <input id="regPassword" type="password" class="form-control pe-5" minlength="6" required>
+        <span class="password-toggle position-absolute top-50 end-0 translate-middle-y pe-3" title="Toggle Password Visibility">👁️</span>
+      </div>
+
+      <div class="mb-4 position-relative">
+        <label for="regConfirmPassword" class="form-label">Confirm Password</label>
+        <input id="regConfirmPassword" type="password" class="form-control pe-5" required>
+        <span class="password-toggle position-absolute top-50 end-0 translate-middle-y pe-3" title="Toggle Password Visibility">👁️</span>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Register</button>
+    </form>
+
+    <p class="text-center mt-3 small">
+      Already have an account? <a href="index.html">Login here</a>
+    </p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
